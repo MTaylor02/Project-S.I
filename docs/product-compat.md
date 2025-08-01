@@ -17,7 +17,7 @@ This feature allows products to be sorted by CPU details for compatibility, in a
   "make": "string",
   "model": "string",
   "manufacturer": "string"
-}```
+}
 
 Response Body
 
