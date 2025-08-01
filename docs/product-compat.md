@@ -13,11 +13,11 @@ The Product Compatibility endpoint is unique in that it is an entirely end-user 
 This feature allows products to be sorted by CPU details for compatibility, in ascending or descending fashion. In other words, by least or most expensive. The end-user will enter this into a dialog box prior to searching. This pre-processing of information allows the search to be focused on a particular platform, displaying those results first.
 
 **Request Body**
-'{
+`{
   "make": "string",
   "model": "string",
   "manufacturer": "string"
-}'
+}`
 
 Response Body
 
