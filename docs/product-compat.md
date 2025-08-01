@@ -13,7 +13,7 @@ The Product Compatibility endpoint is unique in that it is an entirely end-user 
 This feature allows products to be sorted by CPU details for compatibility, in ascending or descending fashion. In other words, by least or most expensive. The end-user will enter this into a dialog box prior to searching. This pre-processing of information allows the search to be focused on a particular platform, displaying those results first.
 
 **Request Body**
-```
+```json
 {
   "make": "string",
   "model": "string",
@@ -22,7 +22,7 @@ This feature allows products to be sorted by CPU details for compatibility, in a
 ```
 
 **Response Body**
-```
+```json
 {
   "products": [
     {
@@ -52,7 +52,7 @@ This feature allows products to be sorted by the end-user field of PSU Wattage. 
 
 **Request Body**
 
-```
+```json
 {
   "minWattage": 650
 }
@@ -60,7 +60,7 @@ This feature allows products to be sorted by the end-user field of PSU Wattage. 
 
 **Response Body**
 
-```
+```json
 {
   "products": [
     {
@@ -80,7 +80,7 @@ During a typical search, all of these features will be taken into account while 
 
 **Request Body**
 
-```
+```json
 {
   "priceOrder": "asc",
   "inStockFirst": true,
@@ -97,7 +97,7 @@ During a typical search, all of these features will be taken into account while 
 
 **Response Body**
 
-```
+```json
 {
   "products": [
     {
