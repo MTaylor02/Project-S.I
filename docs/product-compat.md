@@ -21,12 +21,95 @@ This feature allows products to be sorted by CPU details for compatibility, in a
 }
 ```
 
-Response Body
+**Response Body**
+```
+{
+  "products": [
+    {
+      "id": "string",
+      "name": "string",
+      "ramType": "DDR4"
+    }
+  ]
+}
+```
 
 **POST** /products/sort/ram
 
 This feature helps the end-user narrow down even further with regards to their own system. Depending on the CPU, the end-user will be bound to a few choices. DDR3, DDR4, or DDR5 for modern systems.
 
-RAM modules sorted with matching ramType first; each item shows its DDR generation.
+> RAM modules sorted with matching ramType first; each item shows its DDR generation.
 
-DDR2 and DDR RAM modules are not valid entries, as they are not available to purchase. ECC (Error Correcting) RAM modules do not have a specific field, but will still appear in search results with each respective generation. This will be available in a future version.
+> DDR2 and DDR RAM modules are not valid entries, as they are not available to purchase. ECC (Error Correcting) RAM modules do not have a specific field, but will still appear in search results with each respective generation. This will be available in a future version.
+
+**POST** /products/sort/psu
+
+## Sort by Wattage
+
+This feature allows products to be sorted by the end-user field of PSU Wattage. Products that match on their entered CPU and RAM will be further sorted by their power limit. This will allow them to locate products that will be able to run in their entered system, and prevent broken components.
+
+> Power supplies rated at or above `minWattage`, sorted ascending by wattage.
+
+**Request Body**
+
+```
+{
+  "minWattage": 650
+}
+```
+
+**Response Body**
+
+```
+{
+  "products": [
+    {
+      "id": "string",
+      "name": "string",
+      "wattage": 650
+    }
+  ]
+}
+```
+
+**POST** /products/search
+
+## Search Products (Combined Filters and Sorts)
+
+During a typical search, all of these features will be taken into account while performing a search. These searches can specify any or all of: price sort, stock-first flag, shipping‐method priority, CPU compatibility details, RAM generation, and minimum PSU wattage.
+
+**Request Body**
+
+```
+{
+  "priceOrder": "asc",
+  "inStockFirst": true,
+  "shippingPriority": ["express","standard","economy"],
+  "cpu": {
+    "make": "string",
+    "model": "string",
+    "manufacturer": "string"
+  },
+  "ramType": "DDR4",
+  "minPsuWattage": 650
+}
+```
+
+**Response Body**
+
+```
+{
+  "products": [
+    {
+      "id": "string",
+      "name": "string",
+      "price": 0.00,
+      "inStock": true,
+      "shippingMethods": ["standard","express"],
+      "cpuCompatible": true,
+      "ramType": "DDR4",
+      "wattage": 750
+    }
+  ]
+}
+```
